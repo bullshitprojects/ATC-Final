@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using RegistroDeTransacciones.Reportes;
 
 namespace SistemaDePagoEmpleados
 {
@@ -210,6 +211,18 @@ namespace SistemaDePagoEmpleados
         private void btnImprimirInventario_Click(object sender, EventArgs e)
         {
             // Aqui ira lo del reporte
+            Reporte reporte = new Reporte();
+            try
+            {
+                reporte.PrintReport(lInventario, txtUnidadesFlotantes.Text, txtPromedioFlotante.Text, txtSaldoFlotante.Text);
+                MessageBox.Show("Reporte guardado correctamente en: " + reporte.path, "Informe completado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                System.Diagnostics.Process.Start(reporte.path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un problema al intentar guardar el documento" + ex, "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
     }
 }
