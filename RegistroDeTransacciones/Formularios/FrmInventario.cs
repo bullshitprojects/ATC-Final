@@ -9,8 +9,8 @@ namespace SistemaDePagoEmpleados
     {
         Movimientos movimientos = new Movimientos();
 
-        Inventario oCatalogo;
-        List<Inventario> lCatalogo = new List<Inventario>();
+        Inventario oInventario;
+        List<Inventario> lInventario = new List<Inventario>();
 
         Persona oPersona;
         List<Persona> lPersona = new List<Persona>();
@@ -26,7 +26,17 @@ namespace SistemaDePagoEmpleados
         {
             try
             {
-                MessageBox.Show( movimientos.InsertarMovimiento(txtFecha.Value.ToShortDateString(), txtMovimiento.Text, txtNombre.Text, txtConcepto.Text, Convert.ToInt32(txtCantidad.Text), Convert.ToDouble(txtCostoUnitario.Text), Convert.ToDouble(txtTotal.Text))); 
+                if (txtMovimiento.Text=="Compra")
+                {
+                    MessageBox.Show(movimientos.InsertarMovimiento(txtFecha.Value.ToShortDateString(), txtMovimiento.Text, txtNombre.Text, txtConcepto.Text, Convert.ToInt32(txtCantidad.Text), Convert.ToDouble(txtCostoUnitario.Text), Convert.ToDouble(txtTotal.Text)));
+
+                }
+                else
+                {
+                    MessageBox.Show(movimientos.InsertarMovimiento(txtFecha.Value.ToShortDateString(), txtMovimiento.Text, txtNombre.Text, txtConcepto.Text, Convert.ToInt32(txtCantidad.Text), Convert.ToDouble(oInventario.promedioflotante), (Convert.ToDouble(txtCantidad.Text) * oInventario.promedioflotante)));
+
+                }
+
                 CargarTabla();
                 txtConcepto.Text = "";
                 txtCantidad.Text = "";
@@ -45,14 +55,16 @@ namespace SistemaDePagoEmpleados
 
         public void CargarTabla()
         {
-            oCatalogo = new Inventario();
-            lCatalogo = oCatalogo.CargarInventario();
+            oInventario = new Inventario();
+            lInventario = oInventario.CargarInventario();
+
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = lCatalogo;
+            dataGridView1.DataSource = lInventario;
             dataGridView1.Visible = true;
-            txtPromedioFlotante.Text = "$ "+ Math.Round(oCatalogo.promedioflotante,2).ToString();
-            txtUnidadesFlotantes.Text = oCatalogo.existenciasflotantes.ToString();
-            txtSaldoFlotante.Text = "$ " + Math.Round(oCatalogo.saldoflotante,2).ToString();
+
+            txtPromedioFlotante.Text = "$ "+ Math.Round(oInventario.promedioflotante,2).ToString();
+            txtUnidadesFlotantes.Text = oInventario.existenciasflotantes.ToString();
+            txtSaldoFlotante.Text = "$ " + Math.Round(oInventario.saldoflotante,2).ToString();
         }
 
         public class DataGridViewUtils
@@ -144,7 +156,7 @@ namespace SistemaDePagoEmpleados
         {
             if (txtMovimiento.Text == "Venta" | txtMovimiento.Text == "Devolución")
             {
-                txtCostoUnitario.Text = oCatalogo.promedioflotante.ToString();
+                txtCostoUnitario.Text = Math.Round(oInventario.promedioflotante, 2).ToString();
             }
             else
             {
@@ -156,8 +168,8 @@ namespace SistemaDePagoEmpleados
         {
             try
             {
-                oCatalogo.ReiniciarInvetario();
-                oCatalogo.ReiniciarPersona();
+                oInventario.ReiniciarInvetario();
+                oInventario.ReiniciarPersona();
                 CargarTabla();
             }
             catch (Exception)
@@ -193,6 +205,11 @@ namespace SistemaDePagoEmpleados
                     throw;
                 }
             }
+        }
+
+        private void btnImprimirInventario_Click(object sender, EventArgs e)
+        {
+            // Aqui ira lo del reporte
         }
     }
 }

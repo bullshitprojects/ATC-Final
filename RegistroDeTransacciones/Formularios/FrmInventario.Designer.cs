@@ -30,7 +30,13 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.txtSaldoFlotante = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPromedioFlotante = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUnidadesFlotantes = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnImprimirInventario = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -52,12 +58,6 @@
             this.txtConcepto = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtUnidadesFlotantes = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPromedioFlotante = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtSaldoFlotante = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,7 +72,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtUnidadesFlotantes);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.btnImprimirInventario);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.dataGridView1);
@@ -84,21 +84,91 @@
             this.panel2.Size = new System.Drawing.Size(825, 587);
             this.panel2.TabIndex = 32;
             // 
-            // button4
+            // txtSaldoFlotante
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Location = new System.Drawing.Point(498, 532);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 29);
-            this.button4.TabIndex = 64;
-            this.button4.Text = "Imprimir Catalogo";
-            this.button4.UseVisualStyleBackColor = false;
+            this.txtSaldoFlotante.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtSaldoFlotante.Enabled = false;
+            this.txtSaldoFlotante.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldoFlotante.Location = new System.Drawing.Point(220, 532);
+            this.txtSaldoFlotante.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSaldoFlotante.Name = "txtSaldoFlotante";
+            this.txtSaldoFlotante.Size = new System.Drawing.Size(100, 25);
+            this.txtSaldoFlotante.TabIndex = 69;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(247, 559);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 17);
+            this.label8.TabIndex = 70;
+            this.label8.Text = "Saldo";
+            // 
+            // txtPromedioFlotante
+            // 
+            this.txtPromedioFlotante.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtPromedioFlotante.Enabled = false;
+            this.txtPromedioFlotante.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPromedioFlotante.Location = new System.Drawing.Point(110, 532);
+            this.txtPromedioFlotante.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPromedioFlotante.Name = "txtPromedioFlotante";
+            this.txtPromedioFlotante.Size = new System.Drawing.Size(106, 25);
+            this.txtPromedioFlotante.TabIndex = 67;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(125, 559);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 17);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Promedio";
+            // 
+            // txtUnidadesFlotantes
+            // 
+            this.txtUnidadesFlotantes.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtUnidadesFlotantes.Enabled = false;
+            this.txtUnidadesFlotantes.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnidadesFlotantes.Location = new System.Drawing.Point(23, 532);
+            this.txtUnidadesFlotantes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUnidadesFlotantes.Name = "txtUnidadesFlotantes";
+            this.txtUnidadesFlotantes.Size = new System.Drawing.Size(83, 25);
+            this.txtUnidadesFlotantes.TabIndex = 65;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(39, 559);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 17);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Unidades";
+            // 
+            // btnImprimirInventario
+            // 
+            this.btnImprimirInventario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
+            this.btnImprimirInventario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimirInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirInventario.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirInventario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnImprimirInventario.Location = new System.Drawing.Point(481, 532);
+            this.btnImprimirInventario.Margin = new System.Windows.Forms.Padding(2);
+            this.btnImprimirInventario.Name = "btnImprimirInventario";
+            this.btnImprimirInventario.Size = new System.Drawing.Size(170, 29);
+            this.btnImprimirInventario.TabIndex = 64;
+            this.btnImprimirInventario.Text = "Imprimir Inventario";
+            this.btnImprimirInventario.UseVisualStyleBackColor = false;
+            this.btnImprimirInventario.Click += new System.EventHandler(this.btnImprimirInventario_Click);
             // 
             // button2
             // 
@@ -152,6 +222,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(11, 197);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -398,75 +469,6 @@
             this.label16.TabIndex = 29;
             this.label16.Text = "Cantidad:";
             // 
-            // txtUnidadesFlotantes
-            // 
-            this.txtUnidadesFlotantes.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtUnidadesFlotantes.Enabled = false;
-            this.txtUnidadesFlotantes.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnidadesFlotantes.Location = new System.Drawing.Point(23, 532);
-            this.txtUnidadesFlotantes.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUnidadesFlotantes.Name = "txtUnidadesFlotantes";
-            this.txtUnidadesFlotantes.Size = new System.Drawing.Size(66, 25);
-            this.txtUnidadesFlotantes.TabIndex = 65;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 559);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 17);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Unidades";
-            // 
-            // txtPromedioFlotante
-            // 
-            this.txtPromedioFlotante.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPromedioFlotante.Enabled = false;
-            this.txtPromedioFlotante.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPromedioFlotante.Location = new System.Drawing.Point(121, 532);
-            this.txtPromedioFlotante.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPromedioFlotante.Name = "txtPromedioFlotante";
-            this.txtPromedioFlotante.Size = new System.Drawing.Size(66, 25);
-            this.txtPromedioFlotante.TabIndex = 67;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(118, 559);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 17);
-            this.label7.TabIndex = 68;
-            this.label7.Text = "Promedio";
-            // 
-            // txtSaldoFlotante
-            // 
-            this.txtSaldoFlotante.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtSaldoFlotante.Enabled = false;
-            this.txtSaldoFlotante.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldoFlotante.Location = new System.Drawing.Point(220, 532);
-            this.txtSaldoFlotante.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSaldoFlotante.Name = "txtSaldoFlotante";
-            this.txtSaldoFlotante.Size = new System.Drawing.Size(66, 25);
-            this.txtSaldoFlotante.TabIndex = 69;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(229, 559);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 17);
-            this.label8.TabIndex = 70;
-            this.label8.Text = "Saldo";
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,7 +500,7 @@
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnImprimirInventario;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox txtNombre;
         private System.Windows.Forms.Label label1;
